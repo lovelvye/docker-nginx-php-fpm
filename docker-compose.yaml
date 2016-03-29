@@ -1,0 +1,16 @@
+nginx:
+    build: nginx/
+    ports:
+        - "80:80"
+    links:
+        - php
+    volumes:
+        - ./nginx/html:/usr/share/nginx/html
+        - ./nginx/log:/var/log/nginx
+
+php:
+    build: php/
+    ports:
+      - "9000:9000"
+    volumes:
+        - ./nginx/html:/usr/share/nginx/html
